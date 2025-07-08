@@ -17,7 +17,8 @@ const serviceAccount = {
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  storageBucket: `${process.env.project_id}.firebasestorage.app`,
+  databaseURL: 'https://node-test-1fabc-default-rtdb.firebaseio.com',
+  storageBucket: `${process.env.project_id}.appspot.com`,
 });
 
 const validateFirebaseGoogle = async (req, res, next) => {
