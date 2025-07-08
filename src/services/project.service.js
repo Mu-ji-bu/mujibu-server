@@ -1,7 +1,5 @@
 const httpStatus = require('http-status');
 const { fakerZH_TW: faker } = require('@faker-js/faker');
-const randomSeed = faker.number.int(); // <- random
-faker.seed(randomSeed);
 const mongoose = require('mongoose');
 const ApiError = require('../utils/ApiError');
 const { Project } = require('../models');
@@ -46,7 +44,7 @@ const generateRandomProjects = (numProjects) => {
         planOriginalPrice: faker.commerce.price(),
         planStartTime: faker.date.future(),
         planEndTime: faker.date.future(),
-        planImage: faker.image.urlPicsumPhotos(),
+        planImage: faker.image.url(),
         planDescription: faker.lorem.paragraph(),
         otherNotes: [faker.lorem.sentence(), faker.lorem.sentence()],
         planBackers: faker.number.int({ min: 0, max: 100 }),
@@ -65,7 +63,7 @@ const generateRandomProjects = (numProjects) => {
     project.projectStatus = faker.number.int({ min: 0, max: 9 });
     project.projectCategory = faker.number.int({ min: 0, max: 5 });
     project.projectName = faker.commerce.productName();
-    project.projectImage = faker.image.urlPicsumPhotos();
+    project.projectImage = faker.image.url();
     project.projectDescription = faker.lorem.paragraph();
     project.goalAmount = goalAmount;
     project.currentAmount = currentAmount;
